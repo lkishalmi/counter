@@ -1,4 +1,4 @@
-package com.lkishalmi;
+package com.lkishalmi.counter;
 
 import io.micronaut.runtime.Micronaut;
 

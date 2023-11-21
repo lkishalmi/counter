@@ -1,4 +1,4 @@
-package com.lkishalmi;
+package com.lkishalmi.counter;
 
 import io.micronaut.context.condition.Condition;
 import io.micronaut.context.condition.ConditionContext;

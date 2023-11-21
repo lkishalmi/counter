@@ -29,7 +29,7 @@ dependencies {
 
 
 application {
-    mainClass.set("com.lkishalmi.Application")
+    mainClass.set("com.lkishalmi.counter.Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
@@ -50,7 +50,7 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("com.lkishalmi.*")
+        annotations("com.lkishalmi.counter.*")
     }
     aot {
     // Please review carefully the optimizations enabled below
