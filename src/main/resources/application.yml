@@ -1,3 +1,11 @@
 micronaut:
   application:
     name: counter
+dynamodb:
+  table-name: version-counters
+#aws:
+#  accessKeyId:  
+#  secretKey:    
+#  sessionToken: 
+#  region:
+      

@@ -1,13 +1,14 @@
 package com.lkishalmi.counter;
 
 import com.lkishalmi.counter.CounterService.Counter;
-import java.util.Iterator;
+import io.micronaut.core.annotation.NonNull;
+import java.util.Optional;
 
 /**
  *
  * @author lkishalmi
  */
 public interface CounterRepository {
-    Iterator<Counter> loadAll();    
+    Optional<Counter> load(@NonNull String name);
     void save(Counter c);
 }

@@ -1,4 +1,4 @@
-package com.lkishalmi.counter;
+package com.lkishalmi.counter.aws;
 
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.context.annotation.ConfigurationProperties;

@@ -2,9 +2,7 @@ package com.lkishalmi.counter;
 
 import jakarta.inject.Singleton;
 import java.time.Instant;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Optional;
 
 /**
  *
@@ -15,19 +13,15 @@ public class CounterService {
     public record Counter(String name, int value, Instant lastUsed){};
     
     final CounterRepository store;
-    final Map<String, AtomicInteger> values;
 
-    public CounterService() {
-        this.values = new ConcurrentHashMap<>();
-        this.store= new OnDiskCounterStore();
-        
-        store.loadAll().forEachRemaining((c) -> values.put(c.name, new AtomicInteger(c.value)));
+    public CounterService(CounterRepository store) {
+        this.store= store;  
     }
 
     public int increment(String name, int start) {
-        AtomicInteger v = values.computeIfAbsent(name, k -> new AtomicInteger(start));
-        int value = v.getAndIncrement();
-        store.save(new Counter(name, v.get(), Instant.now()));
+        Optional<Counter> counter = store.load(name);
+        int value = counter.isPresent() ? counter.get().value : start;
+        store.save(new Counter(name, value + 1, Instant.now()));
         return value;
     }
 
